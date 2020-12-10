@@ -2,7 +2,8 @@
 @import "./variables";
 
 // Changing Bootstrap Theme Colors
-$theme-colors: ("primary": $primary,
+$theme-colors: (
+  "primary": $primary,
   "secondary": $secondary,
 );
 

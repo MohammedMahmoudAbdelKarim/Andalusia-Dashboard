@@ -1,0 +1,19 @@
+<section id="employees-list" class="wow fadeIn py-5">
+  <!-- If there is clients -->
+
+  <!-- else there is no Employees -->
+  <div *ngIf="!clients.length; else employees">
+    <div class="p-3 text-center">
+      <ng-lottie
+        width="50%"
+        class="d-flex justify-content-center"
+        [options]="options"
+      ></ng-lottie>
+      <h3 class="emptyText">NO EMPLOYEE ADDED YET !</h3>
+      <button class="btn-primary mt-4 border-0 px-3 py-2">
+        Add New Employee
+      </button>
+    </div>
+  </div>
+  <ng-template #employees></ng-template>
+</section>

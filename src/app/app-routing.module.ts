@@ -16,9 +16,11 @@ const routes: Routes = [
           ),
       },
       {
-        path: "clients",
+        path: "employees",
         loadChildren: () =>
-          import("./views/clients/clients.module").then((m) => m.ClientsModule),
+          import("./views/employees/employees.module").then(
+            (m) => m.EmployeesModule
+          ),
       },
       {
         path: "invoices",
