@@ -1,0 +1,93 @@
+<div id="clients-list" class="wow fadeIn py-5">
+  <!-- If there is clients -->
+  <div *ngIf="clinetsArray.length > 0">
+    <div *ngIf="searchResult">
+      <div class="d-flex justify-content-between">
+        <h3 class="p-2 mb-0 text-uppercase font-weight-bold px-lg-3">
+          Clients
+        </h3>
+        <mat-form-field
+          class="example-form-field w-50 px-4"
+          appearance="outline"
+        >
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="value"
+            placeholder="Search for a client"
+            (input)="clientSearch(value)"
+          />
+          <button
+            mat-button
+            *ngIf="value"
+            class="border-0 clearBtn"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="clearValue()"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row p-2 px-lg-3 w-100 mx-0">
+      <div
+        class="col-md-6 mt-3"
+        *ngFor="
+          let client of clients | paginate: { itemsPerPage: 4, currentPage: p };
+          let i = index
+        "
+      >
+        <div class="card p-4">
+          <div class="row align-items-start justify-content-between">
+            <div class="col-2">
+              <img [src]="client.img" alt="client" />
+            </div>
+            <div class="col-5">
+              <div class="info ml-2">
+                <h4>{{ client.name }}</h4>
+                <span>{{ client.city }}</span>
+                <p>{{ client.mobile }}</p>
+              </div>
+            </div>
+            <div class="col-5 d-flex justify-content-end">
+              <button class="border-0 actionBtn">
+                <i class="fas fa-edit mr-3"></i>
+              </button>
+              <button class="border-0 actionBtn" (click)="removeClient(i)">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <hr />
+          <div class="d-flex justify-content-center">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-twitter mx-3"></i>
+            <i class="fab fa-instagram"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      *ngIf="clients.length > 0"
+      class="d-flex justify-content-end mt-4 px-5"
+    >
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+  <!-- else there is no clients -->
+  <div *ngIf="!clients.length">
+    <div class="p-3 text-center">
+      <ng-lottie
+        width="50%"
+        class="d-flex justify-content-center"
+        [options]="options"
+      ></ng-lottie>
+      <h3 class="emptyText">NO CLIENTS ADDED YET</h3>
+      <button class="btn-primary mt-4 border-0 px-3 py-2">
+        Add New Client
+      </button>
+    </div>
+  </div>
+</div>

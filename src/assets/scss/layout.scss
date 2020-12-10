@@ -1,0 +1,113 @@
+#layout {
+  transition: 0.6s all ease-in-out;
+  background: #ffffff;
+
+  .bars-btn {
+    position: absolute;
+    top: 26px;
+    left: 250px;
+    font-size: 20px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    z-index: 99;
+  }
+  .times-btn {
+    position: absolute;
+    top: 17px;
+    cursor: pointer;
+    left: 218px;
+    background: transparent;
+    border: 0;
+    outline: none;
+
+    .fa-times {
+      color: $white;
+    }
+  }
+  .side-links {
+    transition: 0.6s all ease-in-out;
+    max-width: 200px;
+  }
+  .side-menu {
+    // width: 260px;
+    height: 100vh;
+    position: fixed;
+    max-width: 228px !important;
+    z-index: 9999;
+    background: linear-gradient(#ca3423 0%, #eb6b3d 100%);
+    box-shadow: 0px 2px 5px rgba(211, 54, 33, 0.53);
+    overflow-y: scroll;
+    color: $white;
+    transition: 0.6s all ease-in-out;
+    display: flex;
+    flex: 0 0 256px;
+    flex-direction: column;
+
+    .logo {
+      h5 {
+        letter-spacing: 5px;
+      }
+    }
+
+    ul {
+      li {
+        cursor: pointer;
+        outline: none;
+
+        span {
+          color: $white;
+        }
+      }
+
+      .active {
+        background: #ff9d0e;
+
+        a,
+        span {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  main {
+    flex-basis: auto;
+    flex-shrink: 0;
+    flex-grow: 1;
+    min-width: 0;
+    transition: 0.6s all ease-in-out;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+}
+
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+// Mobile
+@media (min-width: 240px) and (max-width: 425px) {
+}
+
+// Tablet
+@media (min-width: 426px) and (max-width: 768px) {
+}
+#layout:dir(ltr) {
+  .bars-btn {
+    left: 250px !important;
+  }
+}
+
+#layout:dir(rtl) {
+  .bars-btn {
+    left: 1070px !important;
+  }
+}

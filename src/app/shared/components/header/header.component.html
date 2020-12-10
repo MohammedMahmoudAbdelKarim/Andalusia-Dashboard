@@ -1,0 +1,31 @@
+<nav class="wow fadeIn" dir="{{ direction$ | async }}" [lang]="lang">
+  <div class="row w-100 justify-content-end align-items-center no-gutters p-3">
+    <div class="d-flex col-4 justify-content-center align-items-center">
+      <span class="text-white date">{{ date | date: "longDate" }}</span>
+    </div>
+    <div class="col-4 d-flex justify-content-end align-items-center">
+      <button class="bg-transparent border-0" [matMenuTriggerFor]="menu">
+        <img
+          src="../../../../assets/imgs/Avatar.svg"
+          alt="personal-img"
+          class="mx-3"
+        />
+        <span class="text-white">Mohammed Mohmoud</span>
+      </button>
+      <mat-menu #menu="matMenu" class="menu">
+        <button mat-menu-item [lang]="lang">
+          <i class="fas fa-user-circle"></i>
+          <span class="mx-2" [translate]="'HEADER.PROFILE'"></span>
+        </button>
+        <button mat-menu-item (click)="changeLang()" [lang]="lang">
+          <i class="fas fa-globe"></i>
+          <span class="mx-2" [translate]="'HEADER.LANG'"></span>
+        </button>
+        <button mat-menu-item [lang]="lang">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="mx-2" [translate]="'HEADER.LOGOUT'"></span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</nav>
