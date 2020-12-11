@@ -32,7 +32,7 @@ export function playerFactory() {
     HttpClientModule,
     ToastrModule.forRoot({
       timeOut: 5000,
-      positionClass: "toast-bottom-left",
+      positionClass: "toast-top-center",
       progressBar: true,
       closeButton: true,
       enableHtml: true,

@@ -23,7 +23,7 @@ main:lang(en),
 header:lang(en),
 footer:lang(en),
 nav:lang(en) {
-  font-family: $regular;
+  font-family: $regular !important;
   text-align: left;
 
   .mx-trans-1 {
@@ -51,7 +51,7 @@ main:lang(ar),
 header:lang(ar),
 footer:lang(ar),
 nav:lang(ar) {
-  font-family: $arabicFont;
+  font-family: $arabicFont !important;
   text-align: right;
 
   .mx-trans-1 {

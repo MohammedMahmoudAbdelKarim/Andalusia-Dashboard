@@ -13,15 +13,20 @@
     "NURSES": "الممرضين",
     "DOCTORS": "الدكاترة"
   },
-  "STATISTICS": {
-    "STATISTICS": "الاحصائيات",
-    "SITES": "المواقع",
-    "STAFF": "طاقم مؤهل",
-    "MACHIENES": "الاجهزة",
-    "CLIENTS": "العملاء"
+  "NEW_EMPLOYEE": {
+    "NEW_EMP": "اضافة موظف جديد",
+    "UPDATE_EMP": "تعديل بيانات الموظف",
+    "NAME": "اسم الموظف ",
+    "DEPARTMENT": "القسم ",
+    "CODE": "كود الموظف ",
+    "BIRTHDAY": "تاريخ الميلاد ",
+    "GENDER": "النوع ",
+    "ADD": "اضافة",
+    "UPDATE": "تعديل"
   },
-  "PARTNERS": {
-    "PARTNERS": "شركائنا"
+  "EMPLOYEES_LIST": {
+    "NO": "لا يوجد عناصر",
+    "ADD_NEW": "اضف موظف جديد"
   },
   "NEWS": {
     "RECENT_NEWS": "اخر الاخبار",

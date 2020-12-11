@@ -8,8 +8,17 @@ import { NgxPaginationModule } from "ngx-pagination";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LottieModule } from "ngx-lottie";
+import { MatSelectModule } from "@angular/material/select";
+import { MatRadioModule } from "@angular/material/radio";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material";
+import { TranslateModule } from "@ngx-translate/core";
+import { MatTableModule } from "@angular/material/table";
+import { MatSortModule } from "@angular/material/sort";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -20,12 +29,22 @@ import { LottieModule } from "ngx-lottie";
   imports: [
     CommonModule,
     EmployeesRoutingModule,
+    MatPaginatorModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
     NgxPaginationModule,
     MatFormFieldModule,
+    MatTableModule,
     MatInputModule,
     MatIconModule,
+    MatSortModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatRadioModule,
     LottieModule,
+    MatDatepickerModule,
+    TranslateModule.forChild(),
   ],
 })
 export class EmployeesModule {}

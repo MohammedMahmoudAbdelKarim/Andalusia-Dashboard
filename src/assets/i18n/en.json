@@ -13,15 +13,20 @@
     "NURSES": "Nurses",
     "DOCTORS": "Doctors"
   },
-  "STATISTICS": {
-    "STATISTICS": "STATISTICS",
-    "SITES": "Sites",
-    "STAFF": "Qualified Staff",
-    "MACHIENES": "Machienes",
-    "CLIENTS": "Clients Serviced"
+  "NEW_EMPLOYEE": {
+    "NEW_EMP": "Add New Employee",
+    "UPDATE_EMP": "Update Employee",
+    "NAME": "Employee Name ",
+    "DEPARTMENT": "Department ",
+    "CODE": "Employee Code",
+    "BIRTHDAY": "Birthday",
+    "GENDER": "Gender",
+    "ADD": "Add",
+    "UPDATE": "Edit"
   },
-  "PARTNERS": {
-    "PARTNERS": "GREAT PARTNERS"
+  "EMPLOYEES_LIST": {
+    "NO": "NO EMPLOYEE ADDED YET !",
+    "ADD_NEW": "Add New Employee"
   },
   "NEWS": {
     "RECENT_NEWS": "RECENT NEWS",
