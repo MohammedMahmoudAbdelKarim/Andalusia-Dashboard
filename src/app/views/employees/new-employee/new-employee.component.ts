@@ -6,6 +6,7 @@ import { HandleErrorService } from "src/app/shared/services/handleError.service"
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Locale } from "src/app/shared/interfaces/localeInterface";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-new-employee",
@@ -23,12 +24,29 @@ export class NewEmployeeComponent implements OnInit {
   // Handle Validation Messages
   showValidationError = this.handleError.showValidationError;
   getFormValidationMessage = this.handleError.getFormValidationMessage;
+  editableEmployee: any = {};
+  employeeIndex: any = "";
+  updateMode = false;
 
   constructor(
     private handleError: HandleErrorService,
     private toasset: ToastersService,
-    private dataShare: DataShareService
+    private dataShare: DataShareService,
+    private router: Router
   ) {
+    this.editableEmployee = this.dataShare.employee;
+    this.employeeIndex = this.dataShare.employeeIndex;
+    if (this.editableEmployee) {
+      this.updateMode = true;
+      this.newEmployee.patchValue({
+        name: this.editableEmployee.name,
+        department: this.editableEmployee.department,
+        code: this.editableEmployee.code,
+        birthday: this.editableEmployee.birthday,
+        gender: this.editableEmployee.gender,
+      });
+    }
+
     this.direction$.subscribe((dir) => {
       this.dir = dir;
     });
@@ -55,10 +73,23 @@ export class NewEmployeeComponent implements OnInit {
         this.employeesArray.push(form);
         this.toasset.Success(form.name + " " + "Added Successfully");
       }
-      localStorage.setItem("employees", JSON.stringify(this.employeesArray));
+    } else {
+      this.employeesArray.push(form);
     }
+    localStorage.setItem("employees", JSON.stringify(this.employeesArray));
     this.newEmployee.reset();
     this.newEmployee.controls.birthday.setValue(new Date());
+    this.router.navigateByUrl("/employees");
+  }
+
+  // Edit Employee
+  editEmployee(form) {
+    this.employeesArray = JSON.parse(localStorage.getItem("employees"));
+    this.employeesArray[this.employeeIndex] = form;
+    console.log(this.employeesArray);
+    this.toasset.Info(form.name + " has been updated successfully");
+    localStorage.setItem("employees", JSON.stringify(this.employeesArray));
+    this.router.navigateByUrl("/employees");
   }
 
   ngOnInit() {}

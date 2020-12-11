@@ -66,6 +66,7 @@
         </div>
         <div class="col-md-3 mt-4">
           <button
+            routerLink="/employees/new-employee"
             class="btn btn-primary"
             [translate]="'EMPLOYEES_LIST.ADD_NEW'"
           ></button>
@@ -102,35 +103,78 @@
 
       <!-- Column -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Employee Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          [translate]="'NEW_EMPLOYEE.NAME'"
+        ></th>
+        <td mat-cell *matCellDef="let element">
+          <span>
+            {{ element.name }}
+          </span>
+        </td>
       </ng-container>
 
       <!-- Column -->
       <ng-container matColumnDef="code">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Employee Code</th>
-        <td mat-cell *matCellDef="let element">{{ element.code }}</td>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          [translate]="'NEW_EMPLOYEE.CODE'"
+        ></th>
+        <td mat-cell *matCellDef="let element">
+          <span>
+            {{ element.code }}
+          </span>
+        </td>
       </ng-container>
 
       <!-- Column -->
       <ng-container matColumnDef="department">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Department</th>
-        <td mat-cell *matCellDef="let element">{{ element.department }}</td>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          [translate]="'NEW_EMPLOYEE.DEPARTMENT'"
+        >
+          Department
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <span>
+            {{ element.department }}
+          </span>
+        </td>
       </ng-container>
 
       <!-- Column -->
       <ng-container matColumnDef="birthday">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date of Birth</th>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          [translate]="'NEW_EMPLOYEE.BIRTHDAY'"
+        >
+          Date of Birth
+        </th>
         <td mat-cell *matCellDef="let element">
-          {{ element.birthday | date: "longDate" }}
+          <span>
+            {{ element.birthday | date: "longDate" }}
+          </span>
         </td>
       </ng-container>
 
       <!-- Column -->
       <ng-container matColumnDef="gender">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          [translate]="'NEW_EMPLOYEE.GENDER'"
+        >
+          Gender
+        </th>
         <td mat-cell *matCellDef="let element">
-          <span class="text-capitalize">
+          <span
+            class="text-capitalize gender"
+            [ngClass]="element.gender == 'male' ? 'male' : 'female'"
+          >
             {{ element.gender }}
           </span>
         </td>
@@ -138,10 +182,28 @@
 
       <!-- Column -->
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
-        <td mat-cell *matCellDef="let element">
-          <button><i class="fas fa-trash-alt"></i></button>
-          <button><i class="fas fa-edit"></i></button>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          [translate]="'NEW_EMPLOYEE.ACTIONS'"
+        >
+          Actions
+        </th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <button
+            class="actionBtn deleteBtn"
+            (click)="removeEmployee(element, i)"
+          >
+            <i class="fas fa-trash-alt"></i>
+          </button>
+          <button
+            class="actionBtn editBtn"
+            [routerLink]="['/employees/new-employee']"
+            [queryParams]="{ udateMode: true, employee_id: element.code }"
+            (click)="editEmployee(element, i)"
+          >
+            <i class="fas fa-edit"></i>
+          </button>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

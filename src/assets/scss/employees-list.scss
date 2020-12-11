@@ -6,4 +6,52 @@
   mat-icon {
     cursor: pointer;
   }
+  .actionBtn {
+    border: 0;
+    padding: 6px 10px;
+    outline: 0;
+    color: $white;
+  }
+  .deleteBtn {
+    background: $disabled;
+  }
+  .editBtn {
+    background: $primary;
+  }
+}
+.swal2-popup.swal2-modal.swal2-icon-warning.animate__animated.animate__fadeInDown {
+  font-family: $arabicFont;
+}
+th,
+td {
+  font-family: unset;
+}
+td {
+  span {
+    font-size: 0.8rem;
+  }
+}
+.gender {
+  border-radius: 50px;
+  padding: 5px 13px;
+}
+.female {
+  background: pink;
+}
+.male {
+  background: limegreen;
+  color: $white;
+}
+.mat-header-row {
+  background: $primary;
+  th {
+    color: $white;
+    font-family: unset;
+  }
+}
+.mat-paginator-icon {
+  color: #fff;
+}
+table.mat-table {
+  font-family: unset;
 }

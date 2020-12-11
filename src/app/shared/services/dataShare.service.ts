@@ -14,6 +14,9 @@ export class DataShareService {
     private cookieService: CookieService
   ) {}
 
+  employee: any;
+  employeeIndex: any;
+
   localeSubject = new BehaviorSubject<Locale>({ dir: "", lang: "" });
   public locale$: Observable<Locale> = this.localeSubject.asObservable();
 
@@ -44,12 +47,10 @@ export class DataShareService {
     this.cf.setLocalItem("locale", this.localeSubject.value, Duration.year);
   }
 
-  // Loader
-  enableLoader() {
-    this.loaderSubject.next(true);
-  }
-  disableLoader() {
-    this.loaderSubject.next(false);
+  // Get Signle Employee Data
+  getEmployee(data, index) {
+    this.employee = data;
+    this.employeeIndex = index;
   }
 
   // Spalsh
