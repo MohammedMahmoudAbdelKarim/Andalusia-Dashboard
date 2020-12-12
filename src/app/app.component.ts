@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { Observable } from "rxjs";
-import { delay } from "rxjs/operators";
 import { Locale } from "./shared/interfaces/localeInterface";
 import { CommonFunctionsService } from "./shared/services/commonFunctions.service";
 import { TranslateService } from "@ngx-translate/core";
@@ -18,7 +17,6 @@ export class AppComponent {
     public translate: TranslateService,
     private cf: CommonFunctionsService
   ) {}
-  loader$: Observable<boolean> = this.dataShare.loader$.pipe(delay(0));
   showSplash$: Observable<boolean> = this.dataShare.showSplash$;
 
   ngOnInit() {
@@ -39,5 +37,10 @@ export class AppComponent {
       this.direction = locale.dir;
       this.lang = locale.lang;
     });
+  }
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    localStorage.removeItem("locale");
   }
 }

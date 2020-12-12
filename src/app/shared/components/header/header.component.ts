@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   date: Date = new Date();
 
   changeLang() {
-    this.language = this.language === "ar" ? "en" : "ar";
+    this.language = this.language == "ar" ? "en" : "ar";
     this.dataShare.changeAppLanguage(this.language);
   }
 

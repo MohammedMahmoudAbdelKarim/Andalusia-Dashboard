@@ -26,7 +26,7 @@ export class LayoutComponent implements OnInit {
     let tablet = window.matchMedia("(min-width: 426px) and (max-width: 768px)");
     mobile.matches || tablet.matches ? this.closeNav() : this.openNav();
   }
-
+  showSplash$: Observable<boolean> = this.dataShare.showSplash$;
   // Get Direction
   direction: string = "";
   direction$: Observable<string> = this.dataShare.locale$.pipe(
