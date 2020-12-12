@@ -81,7 +81,6 @@ export class NewEmployeeComponent implements OnInit {
     this.newEmployee.controls.birthday.setValue(new Date());
     setTimeout(() => {
       this.router.navigateByUrl("/employees");
-      s;
     }, 1000);
   }
 
