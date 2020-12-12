@@ -1,46 +1,26 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-const ELEMENT_DATA: any = [
-  {
-    img: "../../../../assets/imgs/p-1.png",
-    name: "Women’s Vintage Peacoat",
-    status: "Available",
-    stock: "320 In Stock",
-    total: "$29,192",
-  },
-  {
-    img: "../../../../assets/imgs/p-2.png",
-    name: "Women’s Oatmeal Sweater",
-    status: "Sold",
-    stock: "Out of Stock",
-    total: "$29,192",
-  },
-  {
-    img: "../../../../assets/imgs/p-3.png",
-    name: "Women’s Denim Shirt",
-    status: "Pending",
-    stock: "3 In Stock",
-    total: "$29,192",
-  },
-  {
-    img: "../../../../assets/imgs/p-4.png",
-    name: "Women’s Vintage Peacoat",
-    status: "Pending",
-    stock: "3 In Stock",
-    total: "$29,192",
-  },
-];
-
+import { Component, OnInit } from "@angular/core";
+import { AnimationOptions } from "ngx-lottie";
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
-  styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent implements OnInit {
-  displayedColumns: string[] = ["product", "status", "total"];
-  dataSource = ELEMENT_DATA;
-
-  days: any = ["Today", "Last 7 Days", "Last 30 Days"];
-
+  dashboardOptions: AnimationOptions = {
+    path: "https://assets5.lottiefiles.com/packages/lf20_qwvl3M.json",
+    loop: true,
+  };
+  employeesOptions: AnimationOptions = {
+    path: "https://assets2.lottiefiles.com/packages/lf20_qnqidn8g.json",
+    loop: true,
+  };
+  doctorsOptions: AnimationOptions = {
+    path: "https://assets5.lottiefiles.com/private_files/lf30_4FGi6N.json",
+    loop: true,
+  };
+  nurseOptions: AnimationOptions = {
+    path: "https://assets8.lottiefiles.com/packages/lf20_jcsfwbvi.json",
+    loop: true,
+  };
   constructor() {}
 
   ngOnInit() {}

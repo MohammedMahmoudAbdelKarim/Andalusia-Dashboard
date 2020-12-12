@@ -32,7 +32,7 @@
     </h6>
     <form class="w-100 mt-3 mx-0 px-lg-3" [formGroup]="filterForm">
       <div class="row w-100 align-items-center">
-        <div class="col-md-4 mt-3">
+        <div class="col-md-4 mt-3 wow fadeInLeft">
           <label for="name" [translate]="'NEW_EMPLOYEE.NAME'"
             >Employee Name
           </label>
@@ -46,7 +46,7 @@
             <mat-icon matSuffix (click)="nameClear()">close</mat-icon>
           </mat-form-field>
         </div>
-        <div class="col-md-4 mt-3">
+        <div class="col-md-4 mt-3 wow fadeInUp">
           <label for="department" [translate]="'NEW_EMPLOYEE.DEPARTMENT'"
             >Department</label
           >
@@ -64,7 +64,7 @@
             <mat-icon matSuffix (click)="clearDepartment()">close</mat-icon>
           </mat-form-field>
         </div>
-        <div class="col-md-3 mt-4">
+        <div class="col-md-3 mt-4 wow fadeInRight">
           <button
             routerLink="/employees/new-employee"
             class="btn btn-primary"
@@ -77,7 +77,7 @@
       mat-table
       [dataSource]="dataSource"
       matSort
-      class="mat-elevation-z8 w-100"
+      class="mat-elevation-z8 w-100 wow fadeInUp"
     >
       <!-- Checkbox Column -->
       <ng-container matColumnDef="select">
@@ -199,7 +199,6 @@
           <button
             class="actionBtn editBtn"
             [routerLink]="['/employees/new-employee']"
-            [queryParams]="{ udateMode: true, employee_id: element.code }"
             (click)="editEmployee(element, i)"
           >
             <i class="fas fa-edit"></i>

@@ -23,10 +23,10 @@ const routes: Routes = [
           ),
       },
       {
-        path: "invoices",
+        path: "under-development",
         loadChildren: () =>
-          import("./views/invoices/invoices.module").then(
-            (m) => m.InvoicesModule
+          import("./views/under-development/under-development.module").then(
+            (m) => m.UnderDevelopmentModule
           ),
       },
     ],

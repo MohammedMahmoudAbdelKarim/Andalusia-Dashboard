@@ -28,5 +28,8 @@
   "EMPLOYEES_LIST": {
     "NO": "NO EMPLOYEE ADDED YET !",
     "ADD_NEW": "Add New Employee"
+  },
+  "UNDER_DEV": {
+    "UNDER_DEV": "Under Development"
   }
 }

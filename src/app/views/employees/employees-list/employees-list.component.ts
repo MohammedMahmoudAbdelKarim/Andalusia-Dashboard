@@ -130,7 +130,6 @@ export class EmployeesListComponent implements OnInit {
         this.employeesList.splice(i, 1);
         this.dataSource = new MatTableDataSource(this.employeesList);
         this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
         localStorage.setItem("employees", JSON.stringify(this.employeesList));
       }
     });

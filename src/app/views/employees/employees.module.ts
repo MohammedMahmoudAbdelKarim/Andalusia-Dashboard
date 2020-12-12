@@ -1,4 +1,3 @@
-import { EmployeeDetailsComponent } from "./employee-details/employee-details.component";
 import { NewEmployeeComponent } from "./new-employee/new-employee.component";
 import { EmployeesListComponent } from "./employees-list/employees-list.component";
 import { EmployeesRoutingModule } from "./employees-routing.module";
@@ -21,11 +20,7 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 
 @NgModule({
-  declarations: [
-    EmployeesListComponent,
-    NewEmployeeComponent,
-    EmployeeDetailsComponent,
-  ],
+  declarations: [EmployeesListComponent, NewEmployeeComponent],
   imports: [
     CommonModule,
     EmployeesRoutingModule,

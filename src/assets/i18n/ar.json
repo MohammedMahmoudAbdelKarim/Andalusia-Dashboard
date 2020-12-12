@@ -28,5 +28,8 @@
   "EMPLOYEES_LIST": {
     "NO": "لا يوجد عناصر",
     "ADD_NEW": "اضف موظف جديد"
+  },
+  "UNDER_DEV": {
+    "UNDER_DEV": "تحت الانشاء"
   }
 }

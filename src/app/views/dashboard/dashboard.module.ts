@@ -1,20 +1,17 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-
 import { DashboardRoutingModule } from "./dashboard-routing.module";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatSelectModule } from "@angular/material/select";
-import { MatTableModule } from "@angular/material/table";
+import { LottieModule } from "ngx-lottie";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [DashboardComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    MatFormFieldModule,
-    MatTableModule,
-    MatSelectModule,
+    TranslateModule.forChild(),
+    LottieModule,
   ],
 })
 export class DashboardModule {}
