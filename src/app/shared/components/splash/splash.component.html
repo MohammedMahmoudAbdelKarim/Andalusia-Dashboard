@@ -3,7 +3,7 @@
     <!-- Splash Animation Image -->
     <div class="row">
       <div
-        class="splash-img w-50 mx-auto wow bounceIn text-center"
+        class="splash-img w-25 mx-auto wow bounceIn text-center"
         data-wow-delay=".5s"
       >
         <ng-lottie width="100%" [options]="options"></ng-lottie>
@@ -23,9 +23,9 @@
         <span class="arabicFont">اختر اللغة</span>
       </h2>
       <div class="row">
-        <div class="col-lg-6 d-flex justify-content-end">
+        <div class="col-6 d-flex justify-content-end">
           <button
-            class="btn mt-3 wow fadeInLeft w-25"
+            class="langBtn btn mt-3 wow fadeInLeft"
             data-wow-delay=".5s"
             (click)="changeLang('ar')"
           >
@@ -36,9 +36,9 @@
             />
           </button>
         </div>
-        <div class="col-lg-6">
+        <div class="col-6">
           <button
-            class="btn mt-3 wow fadeInRight w-25"
+            class="langBtn btn mt-3 wow fadeInRight"
             data-wow-delay=".5s"
             (click)="changeLang('en')"
           >

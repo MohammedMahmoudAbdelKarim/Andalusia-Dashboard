@@ -58,12 +58,12 @@ export class LayoutComponent implements OnInit {
     this.direction$.subscribe((data) => {
       this.direction = data;
       if (this.direction == "rtl" && this.navClosed) {
-        this.button.nativeElement.style.left = "1070px";
+        this.button.nativeElement.style.left = "90%";
       } else if (this.direction != "rtl" && this.navClosed) {
-        this.button.nativeElement.style.left = "250px";
+        this.button.nativeElement.style.left = "5%";
       }
       if (this.direction == "rtl" && !this.navClosed) {
-        this.button.nativeElement.style.left = "1070px";
+        this.button.nativeElement.style.left = "1030px";
       } else if (this.direction != "rtl" && !this.navClosed) {
         this.button.nativeElement.style.left = "250px";
       }
@@ -78,15 +78,15 @@ export class LayoutComponent implements OnInit {
     this.navClosed = false;
     this.control.nativeElement.style.display = "flex";
     if (this.direction == "rtl") {
-      this.button.nativeElement.style.left = "1070px";
-    } else this.button.nativeElement.style.left = "250px";
+      this.button.nativeElement.style.left = "80%";
+    } else this.button.nativeElement.style.left = "15%";
   }
 
   closeNav() {
     this.navClosed = true;
     this.control.nativeElement.style.display = "none";
     if (this.direction == "rtl") {
-      this.button.nativeElement.style.left = "1295px";
-    } else this.button.nativeElement.style.left = "30px";
+      this.button.nativeElement.style.left = "90%";
+    } else this.button.nativeElement.style.left = "5%";
   }
 }
