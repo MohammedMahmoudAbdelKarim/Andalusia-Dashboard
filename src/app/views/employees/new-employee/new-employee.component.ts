@@ -79,7 +79,10 @@ export class NewEmployeeComponent implements OnInit {
     localStorage.setItem("employees", JSON.stringify(this.employeesArray));
     this.newEmployee.reset();
     this.newEmployee.controls.birthday.setValue(new Date());
-    this.router.navigateByUrl("/employees");
+    setTimeout(() => {
+      this.router.navigateByUrl("/employees");
+      s;
+    }, 1000);
   }
 
   // Edit Employee
