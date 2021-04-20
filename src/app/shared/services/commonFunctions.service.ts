@@ -54,7 +54,7 @@ export class CommonFunctionsService {
 
   getUserDirection() {
     const lang = this.getUserLanguage();
-    return lang === "ar" ? "rtl" : "ltr";
+    ("ltr");
   }
 
   getUserLocale() {
