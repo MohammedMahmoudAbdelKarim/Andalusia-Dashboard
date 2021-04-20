@@ -4,7 +4,6 @@ import { FormControl, FormGroup } from "@angular/forms";
 import { SelectionModel } from "@angular/cdk/collections";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
-import { AnimationOptions } from "ngx-lottie";
 import Swal from "sweetalert2";
 import { Router } from "@angular/router";
 export interface EmployeeList {
@@ -55,11 +54,6 @@ export class EmployeesListComponent implements OnInit {
     console.log(this.employeesList);
   }
 
-  options: AnimationOptions = {
-    path: "../../../../assets/animations/empty.json",
-    loop: true,
-  };
-
   departmentValues: any[] = [];
   employeeName: string = "";
 
@@ -103,7 +97,7 @@ export class EmployeesListComponent implements OnInit {
   // Edit Employee
   editEmployee(employee, i) {
     this.dataShare.getEmployee(employee, i);
-    this.router.navigateByUrl("/employees/new-employee");
+    this.router.navigateByUrl("/home/employees/new-employee");
   }
 
   // Remove Employee

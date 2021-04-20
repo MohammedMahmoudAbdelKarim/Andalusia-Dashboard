@@ -1,0 +1,29 @@
+@import "~@angular/material/theming";
+
+@include mat-core();
+
+// For Light-Theme
+
+$eventum-primary: mat-palette($mat-light-blue);
+$eventum-accent: mat-palette($mat-light-green);
+$eventum-warn: mat-palette($mat-red);
+$eventum-theme: mat-light-theme(
+  $eventum-primary,
+  $eventum-accent,
+  $eventum-warn
+);
+@include angular-material-theme($eventum-theme);
+
+// For Dark-Theme
+
+$eventum-primary-dark: mat-palette($mat-blue);
+$eventum-accent-dark: mat-palette($mat-yellow);
+$eventum-warn-dark: mat-palette($mat-red);
+$eventum-theme-dark: mat-dark-theme(
+  $eventum-primary-dark,
+  $eventum-accent-dark,
+  $eventum-warn-dark
+);
+.dark-theme-mode {
+  @include angular-material-theme($eventum-theme-dark);
+}

@@ -1,0 +1,28 @@
+@import "~@angular/material/theming";
+
+@include mat-core();
+
+// For Light-Theme
+
+$andulsia-primary: mat-palette($mat-orange);
+$andulsia-accent: mat-palette($mat-orange);
+$andulsia-warn: mat-palette($mat-red);
+$andulsia-theme: mat-light-theme(
+  $andulsia-primary,
+  $andulsia-accent,
+  $andulsia-warn
+);
+@include angular-material-theme($andulsia-theme);
+
+// For Dark-Theme
+$andulsia-primary-dark: mat-palette($mat-blue);
+$andulsia-accent-dark: mat-palette($mat-yellow);
+$andulsia-warn-dark: mat-palette($mat-red);
+$andulsia-theme-dark: mat-dark-theme(
+  $andulsia-primary-dark,
+  $andulsia-accent-dark,
+  $andulsia-warn-dark
+);
+.dark-theme-mode {
+  @include angular-material-theme($andulsia-theme-dark);
+}

@@ -1,0 +1,146 @@
+.breadcurme {
+  color: #5b6e88;
+}
+#dashboard {
+  .card {
+    border: 0;
+    border-radius: 5px;
+    background: linear-gradient(to left, #0db2de 0%, #005bea 100%);
+    h6 {
+      font-size: 0.8571rem;
+      font-weight: 500;
+    }
+    p {
+      font-size: 0.8571rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+  .total-users {
+    background: linear-gradient(to left, #0db2de 0%, #005bea 100%);
+  }
+  .total-apps {
+    background: linear-gradient(45deg, #f93a5a, #f7778c);
+  }
+  .total-time {
+    background: linear-gradient(to left, #efa65f, #f76a2d);
+  }
+  table {
+    box-shadow: 5px 7px 26px -5px #cdd4e7;
+    thead {
+      tr {
+        th {
+          padding: 20px 15px;
+          border-bottom: 1px solid #f0f1f5;
+          color: #5b6e88;
+          font-size: 0.9rem;
+          white-space: nowrap;
+          text-transform: uppercase;
+          text-align: center;
+          font-weight: 600;
+        }
+      }
+    }
+    .mat-sort-header-container {
+      justify-content: center;
+    }
+    tbody {
+      tr {
+        background: #f9f9f9;
+        border: 1px solid #eeeeee;
+        td {
+          text-align: center;
+          span {
+            font-size: 0.9rem;
+          }
+        }
+        &:hover {
+          box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+          background: #f6f6f6;
+        }
+      }
+      mat-icon {
+        font-size: 1.3rem;
+      }
+      .edit {
+        color: #5b6e88;
+      }
+      .delete {
+        color: #ff424d;
+      }
+    }
+    td.mat-cell:first-of-type {
+      padding-left: 0 !important;
+    }
+  }
+  .card-widgets {
+    background: #fff;
+    background-clip: border-box;
+    border-radius: 5px;
+    border: 1px solid #deebfd;
+    margin-bottom: 1.3rem;
+    box-shadow: -8px 12px 18px 0 #dadee8;
+    .title {
+      font-size: 1rem;
+    }
+    .description {
+      color: #7987a1;
+      font-size: 0.8571rem;
+    }
+    .sub-title {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.mat-paginator-page-size-label {
+  font-family: "Poppins" !important;
+}
+
+// Mobile
+@media (min-width: 320px) and (max-width: 425px) {
+  .search-table {
+    width: 100%;
+  }
+  .mat-paginator {
+    margin-top: 20px;
+  }
+  .mat-paginator-range-label {
+    margin: 0 24px 0 24px !important;
+  }
+}
+
+// Tablet
+@media (min-width: 426px) and (max-width: 768px) {
+  .search-table {
+    width: 100%;
+  }
+  .mat-paginator {
+    margin-top: 20px;
+  }
+  .mat-paginator-range-label {
+    margin: 0 24px 0 24px !important;
+  }
+}
+
+#chart {
+  max-width: 380px;
+  margin: 35px auto;
+  padding: 0;
+  .apexcharts-legend-text {
+    font-family: "Poppins" !important;
+  }
+}
+
+.change-themes {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 9;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(27px);
+  width: 50px;
+  height: 50px;
+  border: 1px solid #cdd4e7;
+  border-radius: 5px;
+  color: #5b6e88;
+}

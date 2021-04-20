@@ -1,216 +1,111 @@
-<section id="employees-list" class="wow fadeIn px-lg-5 py-5">
+<section id="employees-list" class="wow fadeIn p-lg-3">
   <!-- If there is employees -->
-
   <div *ngIf="!employeesList.length; else employees">
     <div class="p-3 text-center">
-      <ng-lottie
-        width="50%"
-        class="d-flex justify-content-center"
-        [options]="options"
-      ></ng-lottie>
-      <h3 class="emptyText" [translate]="'EMPLOYEES_LIST.NO'">
-        NO EMPLOYEE ADDED YET !
-      </h3>
-      <button
-        class="btn-primary mt-4 border-0 px-3 py-2"
-        routerLink="/employees/new-employee"
-        [translate]="'EMPLOYEES_LIST.ADD_NEW'"
-      >
-        Add New Employee
-      </button>
+      <img src="assets/imgs/task/empty.jpg" class="img-fluid w-50" alt="Logo">
+      <h3 class="emptyText mt-3 font-weight-bold" [translate]="'EMPLOYEES_LIST.NO'"> NO EMPLOYEE ADDED YET ! </h3>
+      <button class="btn-submit mt-4 border-0 px-3 py-2" routerLink="/home/employees/new-employee"
+        [translate]="'EMPLOYEES_LIST.ADD_NEW'"> Add New Employee </button>
     </div>
   </div>
   <!-- else there is no Employees -->
   <ng-template #employees>
-    <h6 class="p-2 px-lg-3 font-weight-bolder">
-      <span
-        class="routerLink"
-        routerLink="/employees"
-        [translate]="'SIDE_MENU.EMPLOYEES'"
-      >
-      </span>
-    </h6>
-    <form class="w-100 mt-3 mx-0 px-lg-3" [formGroup]="filterForm">
-      <div class="row w-100 align-items-center">
-        <div class="col-md-4 mt-3 wow fadeInLeft">
-          <label for="name" [translate]="'NEW_EMPLOYEE.NAME'"
-            >Employee Name
-          </label>
+    <!-- BreadCurme -->
+    <div class="breadcurme d-flex align-items-center px-3">
+      <mat-icon>supervised_user_circle</mat-icon>
+      <span class="ml-2 font-weight-bold">Employees</span>
+    </div>
+    <form class="w-100 mt-3 mx-0" [formGroup]="filterForm">
+      <div class="row w-100 no-gutters align-items-center justify-content-between">
+        <div class="col-md-4 mt-3 wow fadeIn">
+          <label for="name" [translate]="'NEW_EMPLOYEE.NAME'">Employee Name </label>
           <mat-form-field id="name" class="w-100" appearance="outline">
-            <input
-              matInput
-              placeholder="{{ 'NEW_EMPLOYEE.NAME' | translate }}"
-              formControlName="name"
-              (keyup)="filterEmployee($event.target.value)"
-            />
+            <input matInput placeholder="{{ 'NEW_EMPLOYEE.NAME' | translate }}" formControlName="name"
+              (keyup)="filterEmployee($event.target.value)" />
             <mat-icon matSuffix (click)="nameClear()">close</mat-icon>
           </mat-form-field>
         </div>
-        <div class="col-md-4 mt-3 wow fadeInUp">
-          <label for="department" [translate]="'NEW_EMPLOYEE.DEPARTMENT'"
-            >Department</label
-          >
+        <div class="col-md-4 mt-3 wow fadeIn">
+          <label for="department" [translate]="'NEW_EMPLOYEE.DEPARTMENT'">Department</label>
           <mat-form-field id="department" class="w-100" appearance="outline">
-            <mat-select
-              (selectionChange)="getDepartment($event.value)"
-              formControlName="department"
-              multiple
-              placeholder="{{ 'NEW_EMPLOYEE.DEPARTMENT' | translate }}"
-            >
-              <mat-option [value]="i" *ngFor="let i of [1, 2, 3, 4]"
-                >Option {{ i }}</mat-option
-              >
+            <mat-select (selectionChange)="getDepartment($event.value)" formControlName="department" multiple
+              placeholder="{{ 'NEW_EMPLOYEE.DEPARTMENT' | translate }}">
+              <mat-option [value]="i" *ngFor="let i of [1, 2, 3, 4]">Option {{ i }}</mat-option>
             </mat-select>
             <mat-icon matSuffix (click)="clearDepartment()">close</mat-icon>
           </mat-form-field>
         </div>
-        <div class="col-md-3 mt-4 wow fadeInRight">
-          <button
-            routerLink="/employees/new-employee"
-            class="btn btn-primary"
-            [translate]="'EMPLOYEES_LIST.ADD_NEW'"
-          ></button>
+        <div class="col-md-3 mt-4 wow fadeIn">
+          <button routerLink="/home/employees/new-employee" class="btn btn-submit w-100"
+            [translate]="'EMPLOYEES_LIST.ADD_NEW'"></button>
         </div>
       </div>
     </form>
-    <table
-      mat-table
-      [dataSource]="dataSource"
-      matSort
-      class="mat-elevation-z8 w-100 wow fadeInUp"
-    >
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 w-100 wow fadeIn">
       <!-- Checkbox Column -->
       <ng-container matColumnDef="select">
         <th mat-header-cell *matHeaderCellDef>
-          <mat-checkbox
-            (change)="$event ? masterToggle() : null"
-            [checked]="selection.hasValue() && isAllSelected()"
-            [indeterminate]="selection.hasValue() && !isAllSelected()"
-            [aria-label]="checkboxLabel()"
-          >
+          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
           </mat-checkbox>
         </th>
         <td mat-cell *matCellDef="let row">
-          <mat-checkbox
-            (click)="$event.stopPropagation()"
-            (change)="$event ? selection.toggle(row) : null"
-            [checked]="selection.isSelected(row)"
-            [aria-label]="checkboxLabel(row)"
-          >
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
           </mat-checkbox>
         </td>
       </ng-container>
-
       <!-- Column -->
       <ng-container matColumnDef="name">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          [translate]="'NEW_EMPLOYEE.NAME'"
-        ></th>
+        <th mat-header-cell *matHeaderCellDef [translate]="'NEW_EMPLOYEE.NAME'"></th>
         <td mat-cell *matCellDef="let element">
-          <span>
-            {{ element.name }}
-          </span>
+          <span> {{ element.name }} </span>
         </td>
       </ng-container>
-
       <!-- Column -->
       <ng-container matColumnDef="code">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          [translate]="'NEW_EMPLOYEE.CODE'"
-        ></th>
+        <th mat-header-cell *matHeaderCellDef [translate]="'NEW_EMPLOYEE.CODE'"></th>
         <td mat-cell *matCellDef="let element">
-          <span>
-            {{ element.code }}
-          </span>
+          <span> {{ element.code }} </span>
         </td>
       </ng-container>
-
       <!-- Column -->
       <ng-container matColumnDef="department">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          [translate]="'NEW_EMPLOYEE.DEPARTMENT'"
-        >
-          Department
-        </th>
+        <th mat-header-cell *matHeaderCellDef [translate]="'NEW_EMPLOYEE.DEPARTMENT'"> Department </th>
         <td mat-cell *matCellDef="let element">
-          <span>
-            {{ element.department }}
-          </span>
+          <span> {{ element.department }} </span>
         </td>
       </ng-container>
-
       <!-- Column -->
       <ng-container matColumnDef="birthday">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          [translate]="'NEW_EMPLOYEE.BIRTHDAY'"
-        >
-          Date of Birth
-        </th>
+        <th mat-header-cell *matHeaderCellDef [translate]="'NEW_EMPLOYEE.BIRTHDAY'"> Date of Birth </th>
         <td mat-cell *matCellDef="let element">
-          <span>
-            {{ element.birthday | date: "longDate" }}
-          </span>
+          <span> {{ element.birthday | date: "longDate" }} </span>
         </td>
       </ng-container>
-
       <!-- Column -->
       <ng-container matColumnDef="gender">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          [translate]="'NEW_EMPLOYEE.GENDER'"
-        >
-          Gender
-        </th>
+        <th mat-header-cell *matHeaderCellDef [translate]="'NEW_EMPLOYEE.GENDER'"> Gender </th>
         <td mat-cell *matCellDef="let element">
-          <span
-            class="text-capitalize gender"
-            [ngClass]="element.gender == 'male' ? 'male' : 'female'"
-          >
-            {{ element.gender }}
-          </span>
+          <span class="text-capitalize gender" [ngClass]="element.gender == 'male' ? 'male' : 'female'">
+            {{ element.gender }} </span>
         </td>
       </ng-container>
-
       <!-- Column -->
       <ng-container matColumnDef="actions">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          [translate]="'NEW_EMPLOYEE.ACTIONS'"
-        >
-          Actions
-        </th>
+        <th mat-header-cell *matHeaderCellDef [translate]="'NEW_EMPLOYEE.ACTIONS'"> Actions </th>
         <td mat-cell *matCellDef="let element; let i = index">
-          <button
-            class="actionBtn deleteBtn"
-            (click)="removeEmployee(element, i)"
-          >
+          <button class="actionBtn deleteBtn" (click)="removeEmployee(element, i)">
             <i class="fas fa-trash-alt"></i>
           </button>
-          <button
-            class="actionBtn editBtn"
-            [routerLink]="['/employees/new-employee']"
-            (click)="editEmployee(element, i)"
-          >
+          <button class="actionBtn editBtn" [routerLink]="['/employees/new-employee']"
+            (click)="editEmployee(element, i)">
             <i class="fas fa-edit"></i>
           </button>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr
-        mat-row
-        *matRowDef="let row; columns: displayedColumns"
-        (click)="selection.toggle(row)"
-      ></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="selection.toggle(row)"></tr>
     </table>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </ng-template>

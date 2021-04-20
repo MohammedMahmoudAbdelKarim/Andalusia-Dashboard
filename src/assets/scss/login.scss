@@ -1,0 +1,16 @@
+#login {
+  .card {
+    background: #f5f5f5;
+    box-shadow: 5px 7px 26px -5px #cdd4e7;
+    h2 {
+      color: $primary;
+    }
+    p {
+      color: $text;
+    }
+
+    img.logo-login {
+      max-width: 300px;
+    }
+  }
+}

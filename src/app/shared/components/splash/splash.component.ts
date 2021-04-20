@@ -6,7 +6,6 @@ import { DataShareService } from "../../services/dataShare.service";
 @Component({
   selector: "app-splash",
   templateUrl: "./splash.component.html",
-  styleUrls: ["./splash.component.scss"],
 })
 export class SplashComponent implements OnInit {
   modalRef: BsModalRef;

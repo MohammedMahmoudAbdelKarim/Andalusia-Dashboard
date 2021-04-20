@@ -1,29 +1,19 @@
-$regular: "regular";
-$arabicFont: "Cairo";
+$english: "Poppins";
+$arabic: "Cairo";
 
-@font-face {
-  font-family: $regular;
-  src: url("assets/fonts/CORBEL.TTF") format("opentype");
-}
-
-@font-face {
-  font-family: $arabicFont;
-  src: url("assets/fonts/Cairo-Regular.ttf") format("opentype");
-}
-
-.font-english {
-  font-family: $regular;
+.poppins {
+  font-family: $english !important;
 }
 
 .font-arabic {
-  font-family: $arabicFont;
+  font-family: $arabic !important;
 }
-.side-menu:lang(en),
-main:lang(en),
+div:lang(en),
+section:lang(en),
 header:lang(en),
 footer:lang(en),
 nav:lang(en) {
-  font-family: $regular !important;
+  font-family: $english !important;
   text-align: left;
 
   .mx-trans-1 {
@@ -51,7 +41,7 @@ main:lang(ar),
 header:lang(ar),
 footer:lang(ar),
 nav:lang(ar) {
-  font-family: $arabicFont !important;
+  font-family: $arabic !important;
   text-align: right;
 
   .mx-trans-1 {

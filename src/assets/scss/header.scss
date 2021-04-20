@@ -15,14 +15,3 @@ nav {
 button:focus {
   outline: 0 !important;
 }
-nav:lang(ar) {
-  span {
-    font-family: $arabicFont;
-  }
-}
-
-nav:lang(en) {
-  span {
-    font-family: $regular;
-  }
-}

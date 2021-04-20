@@ -1,43 +1,47 @@
 // Variables
 @import "./theme/variables";
 
-// Bootstrap Theme
-@import "./theme/bootstrapTheme.scss";
-
 // Material Theme
-@import "./theme/materialTheme.scss";
+@import "./theme/angular-material-theme.scss";
 
 // Fonts Theme
 @import "./theme/fonts.scss";
 
+// Forms Theme
+@import "./theme/forms.scss";
+
 // Layout Component
 @import "./layout.scss";
 
-// Header Component
-@import "./header.scss";
+// Dashboard Component
+@import "./dashboard.scss";
 
-// Footer Component
-@import "./footer.scss";
-
-// Employees-List Component
+// Employee Component
 @import "./employees-list.scss";
-
-// New Employee Component
-@import "./new-employee.scss";
 
 // Splash Component
 @import "./splash.scss";
+
+// Login Component
+@import "./login.scss";
+
+//-------- Dark Theme Custom ------------ //@include
+// Side-Menu
+@import "./dark/side-menu.scss";
+
+// Dashboard
+@import "./dark/dashboard.scss";
 
 // Global Styles
 
 body {
   width: 100%;
   height: 100%;
-  background: #f0f0f7;
   font-size: 14px;
   overflow: scroll;
   overflow-x: hidden;
   box-sizing: border-box;
+  background: #ecf0fa;
 }
 hr {
   width: 100%;
@@ -55,10 +59,18 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+// Scroll
+::-webkit-scrollbar {
+  width: 0.2em;
+}
 
-button:disabled {
-  background: $disabled !important;
-  cursor: not-allowed;
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 154, 12, 0.5);
+  outline: 1px solid rgba(255, 154, 12, 0.5);
 }
 
 // JUST FOR REFERENCE
@@ -80,12 +92,4 @@ button:disabled {
 
 // 4K
 @media (min-width: 1441px) and (max-width: 2560px) {
-}
-
-// ANGULAR MATERIAL
-.mat-menu-item:lang(ar) {
-  font-family: $arabicFont;
-}
-.mat-menu-item:lang(en) {
-  font-family: $regular;
 }

@@ -25,18 +25,15 @@
             "aot": false,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
-              "./node_modules/owl.carousel/dist/assets/owl.theme.default.css",
+              "src/assets/scss/theme/angular-material-theme.scss",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/wowjs/css/libs/animate.css",
               "./node_modules/animate.css/animate.min.css",
               "./node_modules/ngx-toastr/toastr.css",
+              "src/custom-theme.scss",
               "src/styles.scss"
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.js",
-              "./node_modules/chart.js/dist/Chart.js",
-              "./node_modules/owl.carousel/dist/owl.carousel.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.js",
               "./node_modules/wowjs/dist/wow.min.js",
               "./src/assets/animate/animate.js"
             ]

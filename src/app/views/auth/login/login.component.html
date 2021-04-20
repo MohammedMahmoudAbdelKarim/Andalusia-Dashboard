@@ -1,0 +1,39 @@
+<section id="login" class="wow fadeIn">
+  <div class="row w-100 mx-0 mt-5 p-lg-5">
+    <div class="col-md-8 m-auto text-center">
+      <div class="card border-0 text-center px-3 py-5">
+        <div class="row w-100 mx-0 no-gutters">
+          <div class="col-md-6 row fadeIn">
+            <img src="assets/imgs/logo.png" alt="Logo" class="logo-login mx-auto">
+          </div>
+          <div class="col-md-6 wow fadeIn">
+            <h2 class="text-uppercase font-weight-bold">Sign In</h2>
+            <p>You can manage your stores</p>
+            <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" class="mt-4">
+              <mat-form-field appearance="outline" class="w-100 wow fadeIn" data-wow-delay=".5s">
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="Email Address" required [pattern]="pattern" ngModel name="email"
+                  #email="ngModel" autocomplete="off">
+                <mat-hint class="text-danger wow fadeIn" *ngIf="email.errors?.required && email.touched"> Email is
+                  required ! </mat-hint>
+                <mat-hint class="text-danger wow fadeIn" *ngIf="email.errors?.pattern && email.touched"> Email is
+                  invalid ! </mat-hint>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="w-100 mt-3 wow fadeIn" data-wow-delay=".5s">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="Password" required ngModel name="password"
+                  #password="ngModel" autocomplete="off" minlength="6">
+                <mat-hint class="text-danger wow fadeIn" *ngIf="password.errors?.required && password.touched"> Password
+                  is required ! </mat-hint>
+                <mat-hint class="text-danger wow fadeIn" *ngIf="password.errors?.minlength && password.touched">
+                  Password is Invalid ! </mat-hint>
+              </mat-form-field>
+              <button class="text-uppercase btn-submit mt-4 wow fadeIn" data-wow-delay=".5s"
+                [disabled]="loginForm.invalid">Sign In</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

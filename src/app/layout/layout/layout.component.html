@@ -1,63 +1,199 @@
-<div id="layout" dir="{{ direction$ | async }}">
-  <div class="row w-100 no-gutters">
-    <button #button class="bars-btn text-white" (click)="toggleMenu()">
-      <i class="fas fa-bars"></i>
-    </button>
-    <div #control class="col-2 side-links">
-      <div class="d-flex">
-        <div class="side-menu wow fadeIn" [lang]="lang">
-          <div class="logo py-5 px-2 mb-0 font-weight-bolder text-center">
-            <a href="#"
-              ><img
-                src="../../../assets/imgs/logo.png"
-                alt="logo"
-                class="img-fluid"
-            /></a>
+<div [ngClass]="isDarkTheme? 'dark-theme-mode': ''" dir="{{ direction$ | async }}">
+  <!-- Toolbar -->
+  <mat-toolbar>
+    <div class="w-100 d-flex h-100 align-items-center justify-content-between">
+      <!-- Logo  -->
+      <div class="logo-container h-100 text-center d-flex align-items-center justify-content-center">
+        <img class="logo d-flex" *ngIf="!isDarkTheme" src="assets/imgs/task/logo.svg" alt="Logo" />
+        <img class="logo d-flex" *ngIf="isDarkTheme" src="assets/imgs/task/logo.png" alt="Logo" />
+      </div>
+      <!-- Menu Toggle -->
+      <div class="toolbar-actions w-100 h-100 d-flex align-items-center justify-content-between px-3">
+        <button mat-icon-button *ngIf="sidenav.mode !== 'over'" (click)="sidenav.toggle()">
+          <mat-icon class="toolbar-icon"> menu </mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+          <mat-icon class="toolbar-icon"> menu </mat-icon>
+        </button>
+        <!-- Logo in responsive -->
+        <div class="d-flex">
+          <!-- Actions -->
+          <div class="mr-4 align-items-center d-none d-lg-flex ">
+            <!-- Search -->
+            <div class="search-container">
+              <input type="text" class="search-box" placeholder="Search ...">
+              <button class="search-button bg-transparent border-0">
+                <mat-icon class="toolbar-icon">search</mat-icon>
+              </button>
+            </div>
+            <!-- Full Screen -->
+            <mat-icon class="ml-4 toolbar-icon" (click)="fullScreen()">fullscreen</mat-icon>
+            <!-- Notifications -->
+            <div ngbDropdown class="d-inline-block mx-4">
+              <button class="bg-transparent border-0 d-flex align-items-center" id="dropdownNotification"
+                ngbDropdownToggle>
+                <mat-icon class="toolbar-icon">notifications</mat-icon>
+                <span class="pulse"></span>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="dropdownNotification">
+                <div class="main-header-profile p-3">
+                  <div class="d-flex w-100">
+                    <div class="ml-3 my-auto" style="line-height: 10px;">
+                      <h6 class="font-weight-normal text-white poppins">Notfications</h6>
+                      <span class="poppins">You have 4 unread Notifications</span>
+                    </div>
+                  </div>
+                </div>
+                <ul class="list-unstyled p-0 notification mt-3">
+                  <li class="d-flex align-items-center p-3">
+                    <img src="assets/imgs/task/notification.jpg" width="50px" height="50px" class="rounded-circle"
+                      alt="notification">
+                    <div class="notification-body ml-3">
+                      <h5 class="poppins">Ali has logged out</h5>
+                      <p class="mb-0 poppins">29 July 2020 - 02:26 PM</p>
+                    </div>
+                  </li>
+                  <li class="d-flex align-items-center p-3">
+                    <img src="assets/imgs/task/notification.jpg" width="50px" height="50px" class="rounded-circle"
+                      alt="notification">
+                    <div class="notification-body ml-3">
+                      <h5 class="poppins">Ali has logged out</h5>
+                      <p class="mb-0 poppins">29 July 2020 - 02:26 PM</p>
+                    </div>
+                  </li>
+                  <li class="d-flex align-items-center p-3">
+                    <img src="assets/imgs/task/notification.jpg" width="50px" height="50px" class="rounded-circle"
+                      alt="notification">
+                    <div class="notification-body ml-3">
+                      <h5 class="poppins">Ali has logged out</h5>
+                      <p class="mb-0 poppins">29 July 2020 - 02:26 PM</p>
+                    </div>
+                  </li>
+                  <li class="d-flex align-items-center p-3">
+                    <img src="assets/imgs/task/notification.jpg" width="50px" height="50px" class="rounded-circle"
+                      alt="notification">
+                    <div class="notification-body ml-3">
+                      <h5 class="poppins">Ali has logged out</h5>
+                      <p class="mb-0 poppins">29 July 2020 - 02:26 PM</p>
+                    </div>
+                  </li>
+                  <mat-divider class="mb-3"></mat-divider>
+                  <button class="text-center w-100 poppins bg-transparent border-0 text-primary font-weight-bold">View
+                    All</button>
+                </ul>
+              </div>
+            </div>
+            <!-- Messages -->
+            <div ngbDropdown class="d-inline-block">
+              <button class="bg-transparent border-0 d-flex align-items-center" id="dropdownMessage" ngbDropdownToggle>
+                <mat-icon class="toolbar-icon">message</mat-icon>
+              </button>
+              <div ngbDropdownMenu aria-labelledby="dropdownMessage">
+                <div class="text-center">
+                  <img src="assets/imgs/task/empty.jpg" class="img-fluid" alt="Logo">
+                  <p class="poppins">Your inbox is empty</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <ul class="links px-0">
-            <li routerLink="/dashborad" routerLinkActive="active">
-              <a class="d-flex align-items-center p-3">
-                <i class="fas fa-chart-line"></i>
-                <span class="mx-2" [translate]="'SIDE_MENU.DASHBOARD'"></span>
-              </a>
-            </li>
-            <li routerLink="/employees" routerLinkActive="active">
-              <a class="d-flex align-items-center p-3">
-                <i class="fas fa-users"></i>
-                <span class="mx-2" [translate]="'SIDE_MENU.EMPLOYEES'"></span>
-              </a>
-            </li>
-            <li
-              routerLink="/under-development/nurses"
-              routerLinkActive="active"
-            >
-              <a class="d-flex align-items-center p-3">
-                <i class="fas fa-user-nurse"></i>
-                <span class="mx-2" [translate]="'SIDE_MENU.NURSES'"></span>
-              </a>
-            </li>
-            <li
-              routerLink="/under-development/doctors"
-              routerLinkActive="active"
-            >
-              <a class="d-flex align-items-center p-3">
-                <i class="fas fa-user-md"></i>
-                <span class="mx-2" [translate]="'SIDE_MENU.DOCTORS'"></span>
-              </a>
-            </li>
-          </ul>
+          <!-- Profile -->
+          <div ngbDropdown class="d-inline-block">
+            <button class="bg-transparent border-0" id="dropdownProfile" ngbDropdownToggle>
+              <img src="assets/imgs/task/user.jpg" alt="User" class="user">
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownProfile">
+              <div class="main-header-profile p-3">
+                <div class="d-flex w-100">
+                  <div class="main-user-img">
+                    <img src="assets/imgs/task/user.jpg" alt="user">
+                  </div>
+                  <div class="ml-3 my-auto" style="line-height: 10px;">
+                    <h6 class="text-white poppins">Mohammed Mahmoud</h6>
+                    <span class="poppins">Front-End Developer</span>
+                  </div>
+                </div>
+              </div>
+              <ul class="list-unstyled p-0 user-actions mt-3">
+                <li class="d-flex align-items-center">
+                  <mat-icon class="mr-2">person</mat-icon>
+                  <span class="poppins">Profile</span>
+                </li>
+                <li class="d-flex align-items-center">
+                  <mat-icon class="mr-2">settings</mat-icon>
+                  <span class="poppins">Account Settings</span>
+                </li>
+                <li class="d-flex align-items-center">
+                  <mat-icon class="mr-2">power_settings_new</mat-icon>
+                  <span class="poppins">Logout</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col">
-      <app-header></app-header>
-      <main class="w-100" [lang]="lang" dir="{{ direction$ | async }}">
+  </mat-toolbar>
+  <!-- Side Menu  -->
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="">
+      <div class="w-100">
+        <img class="avatar" src="assets/imgs/task/user.jpg" alt="Logo" />
+        <span class="profile-status"></span>
+      </div>
+      <div class="user-info text-center my-3">
+        <h4 class="mb-1 poppins">Mohammed Mahmoud</h4>
+        <span>Front-End Developer</span>
+      </div>
+      <button mat-button style="height: 0; position: absolute;">
+        <!-- 'absorbs' the auto-focus behavior -->
+      </button>
+      <div class="search-container d-flex d-lg-none">
+        <input type="text" class="search-box poppins" [autofocus]="false" autocomplete="off" placeholder="Search ...">
+        <button class="search-button bg-transparent border-0">
+          <mat-icon class="toolbar-icon">search</mat-icon>
+        </button>
+      </div>
+      <mat-divider class="my-3"></mat-divider>
+      <div>
+        <button mat-button class="menu-button d-flex align-items-center my-2" routerLink="/home/dashboard"
+          routerLinkActive="active">
+          <mat-icon class="toolbar-icon">dashboard</mat-icon>
+          <span class="poppins">Dashboard</span>
+        </button>
+        <button mat-button class="menu-button d-flex align-items-center my-2" routerLink="/home/employees"
+          routerLinkActive="active">
+          <mat-icon class="toolbar-icon">supervised_user_circle</mat-icon>
+          <span class="poppins">Employees</span>
+        </button>
+        <button mat-button class="menu-button d-flex d-lg-none align-items-center my-2">
+          <mat-icon class="toolbar-icon">notifications</mat-icon>
+          <span class="poppins">Notifications <span class="ml-5 notification-count poppins">4</span></span>
+        </button>
+        <button mat-button class="menu-button d-flex d-lg-none align-items-center my-2">
+          <mat-icon class="toolbar-icon">message</mat-icon>
+          <span class="poppins">Messages</span>
+        </button>
+        <button mat-button class="menu-button d-flex align-items-center my-2">
+          <mat-icon class="toolbar-icon">label</mat-icon>
+          <span class="poppins">Staff</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button d-flex align-items-center my-2">
+          <mat-icon class="toolbar-icon">help</mat-icon>
+          <span class="poppins">Help</span>
+        </button>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content">
         <router-outlet></router-outlet>
-      </main>
-    </div>
-  </div>
-  <footer [lang]="lang" class="text-center">
-    <app-footer></app-footer>
-  </footer>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <!-- Theme Toggle Button -->
+  <button class="change-themes">
+    <mat-slide-toggle [(ngModel)]="isDarkTheme">
+      <mat-icon>invert_colors</mat-icon>
+    </mat-slide-toggle>
+  </button>
 </div>
-<app-splash *ngIf="showSplash$"></app-splash>

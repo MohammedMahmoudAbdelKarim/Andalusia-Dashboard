@@ -48,7 +48,8 @@ export class CommonFunctionsService {
   }
 
   getUserLanguage() {
-    return navigator.language.slice(0, 2);
+    // return navigator.language.slice(0, 2);
+    return "en";
   }
 
   getUserDirection() {

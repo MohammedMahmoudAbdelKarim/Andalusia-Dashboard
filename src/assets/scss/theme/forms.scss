@@ -1,0 +1,74 @@
+// Standard
+.mat-form-field {
+  .mat-input-element {
+    color: $primary;
+  }
+  .mat-form-field-label {
+    color: $primary;
+  }
+  .mat-form-field-underline {
+    background-color: $primary;
+  }
+  .mat-form-field-ripple {
+    background-color: $primary;
+  }
+  .mat-form-field-required-marker {
+    color: $primary;
+  }
+}
+
+// Focus
+.mat-form-field.mat-focused {
+  .mat-form-field-label {
+    color: $primary;
+  }
+  .mat-form-field-ripple {
+    background-color: $primary;
+  }
+  .mat-form-field-required-marker {
+    color: $primary;
+  }
+  .mat-input-element {
+    color: $primary;
+  }
+  .mat-form-field-outline-thick {
+    color: $primary;
+  }
+}
+
+// Error
+.mat-form-field.mat-form-field-invalid {
+  .mat-input-element {
+    color: #f44336;
+  }
+  .mat-form-field-label {
+    color: #f44336;
+    .mat-form-field-required-marker {
+      color: #f44336;
+    }
+  }
+  .mat-form-field-ripple {
+    background-color: #f44336;
+  }
+}
+
+// Buttons
+
+.btn-submit {
+  background: #5656ff;
+  font-weight: 900;
+  color: #fff;
+  border: 0;
+  outline: 0;
+  min-width: 120px;
+  height: 45px;
+  &:hover {
+    background: #326094;
+    transition: 0.5s all ease-in-out;
+    color: #fff;
+  }
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

@@ -1,163 +1,80 @@
-<div id="newEmployee" class="wow fadeIn px-lg-5 py-5">
-  <h6 class="p-2 px-lg-3 font-weight-bolder">
-    <span
-      class="routerLink"
-      routerLink="/employees"
-      [translate]="'SIDE_MENU.EMPLOYEES'"
-    >
-    </span>
-    -
-    <span *ngIf="!updateMode" [translate]="'NEW_EMPLOYEE.NEW_EMP'"></span>
-    <span *ngIf="updateMode" [translate]="'NEW_EMPLOYEE.UPDATE_EMP'"></span>
-  </h6>
-  <form
-    class="w-100 mt-3 mx-0 px-lg-3"
-    [formGroup]="newEmployee"
-    (ngSubmit)="submitEmployee(newEmployee.value)"
-  >
+<div id="newEmployee" class="wow fadeIn p-lg-3">
+  <div class="breadcurme d-flex align-items-center px-3">
+    <mat-icon>supervised_user_circle</mat-icon>
+    <span class="ml-2 font-weight-bold">Employees - <span *ngIf="!updateMode"
+        [translate]="'NEW_EMPLOYEE.NEW_EMP'"></span>
+      <span *ngIf="updateMode" [translate]="'NEW_EMPLOYEE.UPDATE_EMP'"></span></span>
+  </div>
+  <form class="w-100 mt-3 mx-0 px-lg-3" [formGroup]="newEmployee" (ngSubmit)="submitEmployee(newEmployee.value)">
     <div class="row w-100">
-      <div class="col-md-6 mt-3 wow fadeInLeft">
-        <label for="name" [translate]="'NEW_EMPLOYEE.NAME'"
-          >Employee Name <span class="text-danger">*</span></label
-        >
+      <div class="col-md-6 mt-3 wow fadeIn">
+        <label for="name" [translate]="'NEW_EMPLOYEE.NAME'">Employee Name <span class="text-danger">*</span></label>
         <mat-form-field id="name" class="w-100" appearance="outline">
-          <input
-            matInput
-            placeholder="{{ 'NEW_EMPLOYEE.NAME' | translate }}"
-            required
-            formControlName="name"
-          />
+          <input matInput placeholder="{{ 'NEW_EMPLOYEE.NAME' | translate }}" required formControlName="name" />
           <mat-icon matSuffix>person</mat-icon>
-          <mat-hint
-            class="text-danger"
-            *ngIf="showValidationError(newEmployee, 'name')"
-            ><i class="fas fa-exclamation-triangle"></i>
-            <span class="mx-trans-2">
-              {{ getFormValidationMessage(newEmployee, "name") }}
-            </span>
+          <mat-hint class="text-danger" *ngIf="showValidationError(newEmployee, 'name')"><i
+              class="fas fa-exclamation-triangle"></i>
+            <span class="mx-trans-2"> {{ getFormValidationMessage(newEmployee, "name") }} </span>
           </mat-hint>
         </mat-form-field>
       </div>
-      <div class="col-md-6 mt-3 wow fadeInRight">
-        <label for="department" [translate]="'NEW_EMPLOYEE.DEPARTMENT'"
-          >Department <span class="text-danger">*</span></label
-        >
+      <div class="col-md-6 mt-3 wow fadeIn">
+        <label for="department" [translate]="'NEW_EMPLOYEE.DEPARTMENT'">Department <span
+            class="text-danger">*</span></label>
         <mat-form-field id="department" class="w-100" appearance="outline">
-          <mat-select
-            formControlName="department"
-            required
-            placeholder="{{ 'NEW_EMPLOYEE.DEPARTMENT' | translate }}"
-          >
-            <mat-option [value]="i" *ngFor="let i of [1, 2, 3, 4]"
-              >Option {{ i }}</mat-option
-            >
+          <mat-select formControlName="department" required placeholder="{{ 'NEW_EMPLOYEE.DEPARTMENT' | translate }}">
+            <mat-option [value]="i" *ngFor="let i of [1, 2, 3, 4]">Option {{ i }}</mat-option>
           </mat-select>
           <mat-icon matSuffix>label</mat-icon>
-          <mat-hint
-            class="text-danger"
-            *ngIf="showValidationError(newEmployee, 'department')"
-            ><i class="fas fa-exclamation-triangle"></i>
-            <span class="mx-trans-2">
-              {{ getFormValidationMessage(newEmployee, "department") }}
-            </span>
+          <mat-hint class="text-danger" *ngIf="showValidationError(newEmployee, 'department')"><i
+              class="fas fa-exclamation-triangle"></i>
+            <span class="mx-trans-2"> {{ getFormValidationMessage(newEmployee, "department") }} </span>
           </mat-hint>
         </mat-form-field>
       </div>
-      <div class="col-md-6 mt-3 wow fadeInLeft">
-        <label for="code" [translate]="'NEW_EMPLOYEE.CODE'"
-          >Employee Code <span class="text-danger">*</span></label
-        >
+      <div class="col-md-6 mt-3 wow fadeIn">
+        <label for="code" [translate]="'NEW_EMPLOYEE.CODE'">Employee Code <span class="text-danger">*</span></label>
         <mat-form-field id="code" class="w-100" appearance="outline">
-          <input
-            matInput
-            placeholder="{{ 'NEW_EMPLOYEE.CODE' | translate }}"
-            required
-            type="number"
-            formControlName="code"
-            min="0"
-            (keypress)="checkPositiveNumber($event)"
-          />
+          <input matInput placeholder="{{ 'NEW_EMPLOYEE.CODE' | translate }}" required type="number"
+            formControlName="code" min="0" (keypress)="checkPositiveNumber($event)" />
           <mat-icon matSuffix>perm_identity</mat-icon>
-          <mat-hint
-            class="text-danger"
-            *ngIf="showValidationError(newEmployee, 'code')"
-            ><i class="fas fa-exclamation-triangle"></i>
-            <span class="mx-trans-2">
-              {{ getFormValidationMessage(newEmployee, "code") }}
-            </span>
+          <mat-hint class="text-danger" *ngIf="showValidationError(newEmployee, 'code')"><i
+              class="fas fa-exclamation-triangle"></i>
+            <span class="mx-trans-2"> {{ getFormValidationMessage(newEmployee, "code") }} </span>
           </mat-hint>
         </mat-form-field>
       </div>
-      <div class="col-md-6 mt-3 wow fadeInRight">
-        <label for="birthday" [translate]="'NEW_EMPLOYEE.BIRTHDAY'"
-          >Birthday <span class="text-danger">*</span></label
-        >
+      <div class="col-md-6 mt-3 wow fadeIn">
+        <label for="birthday" [translate]="'NEW_EMPLOYEE.BIRTHDAY'">Birthday <span class="text-danger">*</span></label>
         <mat-form-field id="birthday" class="w-100" appearance="outline">
-          <input
-            matInput
-            [matDatepicker]="picker"
-            formControlName="birthday"
-            required
-            placeholder="{{ 'NEW_EMPLOYEE.BIRTHDAY' | translate }}"
-          />
-          <mat-datepicker-toggle
-            matSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
+          <input matInput [matDatepicker]="picker" formControlName="birthday" required
+            placeholder="{{ 'NEW_EMPLOYEE.BIRTHDAY' | translate }}" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
-          <mat-hint
-            class="text-danger"
-            *ngIf="showValidationError(newEmployee, 'birthday')"
-            ><i class="fas fa-exclamation-triangle"></i>
-            <span class="mx-trans-2">
-              {{ getFormValidationMessage(newEmployee, "birthday") }}
-            </span>
+          <mat-hint class="text-danger" *ngIf="showValidationError(newEmployee, 'birthday')"><i
+              class="fas fa-exclamation-triangle"></i>
+            <span class="mx-trans-2"> {{ getFormValidationMessage(newEmployee, "birthday") }} </span>
           </mat-hint>
         </mat-form-field>
       </div>
-      <div class="col-md-6 mt-3 wow fadeInLeft">
-        <label for="gender" [translate]="'NEW_EMPLOYEE.GENDER'"
-          >Gender <span class="text-danger">*</span></label
-        >
-        <mat-radio-group
-          id="gender"
-          aria-label="Select a Gender"
-          formControlName="gender"
-          class="d-block"
-        >
+      <div class="col-md-6 mt-3 wow fadeIn">
+        <label for="gender" [translate]="'NEW_EMPLOYEE.GENDER'">Gender <span class="text-danger">*</span></label>
+        <mat-radio-group id="gender" aria-label="Select a Gender" formControlName="gender" class="d-block">
           <ng-container *ngIf="dir != 'rtl'; else arabic">
-            <mat-radio-button *ngIf="dir != 'rtl'" value="male"
-              >Male</mat-radio-button
-            >
-            <mat-radio-button *ngIf="dir != 'rtl'" class="mx-3" value="female"
-              >Female</mat-radio-button
-            >
+            <mat-radio-button *ngIf="dir != 'rtl'" value="male">Male</mat-radio-button>
+            <mat-radio-button *ngIf="dir != 'rtl'" class="mx-3" value="female">Female</mat-radio-button>
           </ng-container>
           <ng-template #arabic>
-            <mat-radio-button *ngIf="dir == 'rtl'" value="male"
-              >ذكر</mat-radio-button
-            >
-            <mat-radio-button *ngIf="dir == 'rtl'" class="mx-3" value="female"
-              >انثى</mat-radio-button
-            >
+            <mat-radio-button *ngIf="dir == 'rtl'" value="male">ذكر</mat-radio-button>
+            <mat-radio-button *ngIf="dir == 'rtl'" class="mx-3" value="female">انثى</mat-radio-button>
           </ng-template>
         </mat-radio-group>
       </div>
-      <div class="col-12 mt-4 wow fadeInLeft">
-        <button
-          *ngIf="!updateMode"
-          class="btn btn-primary"
-          [disabled]="newEmployee.invalid"
-          [translate]="'NEW_EMPLOYEE.ADD'"
-        ></button>
-        <button
-          *ngIf="updateMode"
-          class="btn btn-primary"
-          [disabled]="newEmployee.invalid"
-          [translate]="'NEW_EMPLOYEE.UPDATE'"
-          type="button"
-          (click)="editEmployee(newEmployee.value)"
-        ></button>
+      <div class="col-12 mt-4 wow fadeIn">
+        <button *ngIf="!updateMode" class="btn btn-submit" [disabled]="newEmployee.invalid"
+          [translate]="'NEW_EMPLOYEE.ADD'"></button>
+        <button *ngIf="updateMode" class="btn btn-submit" [disabled]="newEmployee.invalid"
+          [translate]="'NEW_EMPLOYEE.UPDATE'" type="button" (click)="editEmployee(newEmployee.value)"></button>
       </div>
     </div>
   </form>
